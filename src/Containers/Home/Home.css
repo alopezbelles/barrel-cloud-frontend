@@ -1,0 +1,33 @@
+
+.homeDesign {
+  margin: 0;
+
+  /* padding: 0; */
+  width: auto;
+  height: auto;
+  /* position: relative; */
+
+  /* overflow-x: hidden; */
+}
+
+.row1Design {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.col1Design {
+  background: url(../../Assets/trip-wise-background.png) no-repeat center center
+    ;
+  background-size: cover;
+  margin: 0;
+  width: 100%;
+  height: 80vh;
+}
+
+
+.row2Design{
+    background-color: #736878;
+    height: auto;
+}

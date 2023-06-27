@@ -1,0 +1,34 @@
+.navbarDesign {
+    background-color: transparent;
+    /* height: 6em; */
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px; */
+    font-family: 'Roboto', sans-serif;
+    /* border: solid black 1px; */
+    color: rgb(131, 152, 129);
+
+  }
+
+  
+
+  .navbarDesign .nav-link:hover {
+    color: white;
+}
+  
+  /* .me-auto{
+    height: 3.2em;
+  
+  
+  } */
+  
+  .logoNavbar {
+    width: 30px;
+  }
+  
+  .logoNavbar:hover {
+    scale: 1.2;
+    transition: 0.2s;
+  }
+
+  .navbarDesign .nav-link {
+    color: rgb(228, 228, 228);
+  }
