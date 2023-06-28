@@ -8,40 +8,46 @@ import "./BookingsList.css";
 
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
-  const [selectedStatus, setSelectedStatus] = useState("");
+  const [selectedStatuses, setSelectedStatuses] = useState([]);
 
   useEffect(() => {
     // Realizar la llamada a la API para obtener el listado de reservas
-    fetch("http://localhost:3656/getall")
-      .then((response) => response.json())
-      .then((data) => {
-        setBookings(data);
+    axios
+      .get("http://localhost:3656/getall")
+      .then((response) => {
+        setBookings(response.data);
+        setSelectedStatuses(response.data.map((booking) => booking.status));
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
 
-  const handleStatusChange = (event) => {
-    setSelectedStatus(event.target.value);
+  const handleStatusChange = (event, index) => {
+    const newSelectedStatuses = [...selectedStatuses];
+    newSelectedStatuses[index] = event.target.value;
+    setSelectedStatuses(newSelectedStatuses);
   };
 
-  const handleUpdate = (bookingId) => {
+  const handleUpdate = (bookingId, index) => {
+    const selectedStatus = selectedStatuses[index];
+  
     // Realizar la llamada a la API para actualizar el registro con bookingId
-    fetch(`http://localhost:3656/update/${bookingId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: selectedStatus }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Actualizar el estado local si es necesario
-        console.log(data); // Mostrar la respuesta de la API en la consola
+    axios
+      .put("http://localhost:3656/update", {
+        id: bookingId,
+        status: selectedStatus,
+      })
+      .then((response) => {
+        console.log(response.data);
+  
+        // Actualizar el estado local directamente
+        const updatedBookings = [...bookings]; // Crear una copia del array de reservas
+        updatedBookings[index].status = selectedStatus; // Actualizar el estado de la reserva en la copia
+        setBookings(updatedBookings); // Actualizar el estado local con la copia actualizada
       })
       .catch((error) => {
-        console.error(error); // Manejar errores de la llamada a la API
+        console.error(error);
       });
   };
 
@@ -49,23 +55,25 @@ function BookingsList() {
     <Container>
       <h2>Listado de Reservas</h2>
       <ul style={{ listStyleType: "none" }}>
-        {bookings.map((booking) => (
+        {bookings.map((booking, index) => (
           <li key={booking.id}>
             <Row className="rowListDesign">
               <Col>{booking.description}</Col>
               <Col>{booking.createdAt}</Col>
               <Col>
                 <Form.Select
-                  value={booking.status}
-                  onChange={handleStatusChange}
+                  value={selectedStatuses[index]}
+                  onChange={(event) => handleStatusChange(event, index)}
+                  data-id={booking.id}
                 >
                   <option value="active">Active</option>
                   <option value="pending">Pending</option>
                   <option value="canceled">Canceled</option>
                 </Form.Select>
-              </Col>
-              <Col>
-                <Button onClick={() => handleUpdate(booking.id)}>
+                <Button
+                  onClick={() => handleUpdate(booking.id, index)}
+                  data-id={booking.id}
+                >
                   Actualizar
                 </Button>
               </Col>

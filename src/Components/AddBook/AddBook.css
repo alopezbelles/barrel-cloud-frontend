@@ -1,0 +1,23 @@
+.container {
+    color: white;
+    background-color: #736878;
+
+  }
+  
+  h2 {
+    color: white;
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+  
+  .booking {
+    background-color: rgb(255, 255, 255);
+    color: rgb(16, 16, 16);
+  }
+  
+  .rowListDesign {
+    color: white;
+    
+    margin-bottom: 1em;
+  }
+  
