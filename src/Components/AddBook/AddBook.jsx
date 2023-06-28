@@ -37,7 +37,7 @@ function AddBook() {
           // Esperar 2 segundos y luego recargar la página
           setTimeout(() => {
             window.location.reload();
-          }, 2000);
+          }, 1000);
         })
         .catch((error) => {
           console.error(error);
@@ -46,7 +46,7 @@ function AddBook() {
   
     return (
       <Container className="container">
-        <h2>Listado de Reservas</h2>
+        <h2>ADD BOOKING</h2>
         {showSuccessAlert && (
           <Alert
             variant="success"

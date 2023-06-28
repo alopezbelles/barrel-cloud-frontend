@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-
 import axios from "axios";
 
-// STYLES AND AESSETS
+// STYLES AND ASSETS
 import "./BookingsList.css";
 
 function BookingsList() {
@@ -11,7 +10,10 @@ function BookingsList() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
 
   useEffect(() => {
-    // Realizar la llamada a la API para obtener el listado de reservas
+    fetchBookings();
+  }, []);
+
+  const fetchBookings = () => {
     axios
       .get("http://localhost:3656/getall")
       .then((response) => {
@@ -21,7 +23,7 @@ function BookingsList() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  };
 
   const handleStatusChange = (event, index) => {
     const newSelectedStatuses = [...selectedStatuses];
@@ -31,8 +33,7 @@ function BookingsList() {
 
   const handleUpdate = (bookingId, index) => {
     const selectedStatus = selectedStatuses[index];
-  
-    // Realizar la llamada a la API para actualizar el registro con bookingId
+
     axios
       .put("http://localhost:3656/update", {
         id: bookingId,
@@ -40,28 +41,52 @@ function BookingsList() {
       })
       .then((response) => {
         console.log(response.data);
-  
-        // Actualizar el estado local directamente
-        const updatedBookings = [...bookings]; // Crear una copia del array de reservas
-        updatedBookings[index].status = selectedStatus; // Actualizar el estado de la reserva en la copia
-        setBookings(updatedBookings); // Actualizar el estado local con la copia actualizada
+        fetchBookings();
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
+  const handleDelete = (bookingId) => {
+    console.log(bookingId);
+    axios
+      .delete("http://localhost:3656/delete", { data: { id: bookingId } })
+      .then((response) => {
+        console.log(response.data);
+        fetchBookings();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const formatDateTime = (dateTimeString) => {
+    const options = {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    return new Date(dateTimeString).toLocaleString("es-ES", options);
+  };
+
   return (
-    <Container>
-      <h2>Listado de Reservas</h2>
+    <Container >
+      <h2>BOOKINGS LIST</h2>
+      <p>The list of reservations is shown below.  Each one shows its description, creation date, and current status. You can change the status value, or delete the reservation. </p>
       <ul style={{ listStyleType: "none" }}>
         {bookings.map((booking, index) => (
           <li key={booking.id}>
-            <Row className="rowListDesign">
-              <Col>{booking.description}</Col>
-              <Col>{booking.createdAt}</Col>
-              <Col>
+            <Row>
+              <Col className="col1Bookings">{booking.description}</Col>
+              <Col className="col2Bookings">
+                {formatDateTime(booking.createdAt)}
+              </Col>
+              <Col className="col3Bookings">
                 <Form.Select
+                className="formSelectDesign"
                   value={selectedStatuses[index]}
                   onChange={(event) => handleStatusChange(event, index)}
                   data-id={booking.id}
@@ -71,10 +96,18 @@ function BookingsList() {
                   <option value="canceled">Canceled</option>
                 </Form.Select>
                 <Button
-                  onClick={() => handleUpdate(booking.id, index)}
+                  className="buttonDesign"
+                  onClick={() => handleUpdate(booking.id_book, index)}
                   data-id={booking.id}
                 >
                   Actualizar
+                </Button>
+                <Button
+                  className="buttonDesign"
+                  onClick={() => handleDelete(booking.id_book)}
+                  variant="danger"
+                >
+                  Eliminar
                 </Button>
               </Col>
             </Row>
@@ -86,3 +119,5 @@ function BookingsList() {
 }
 
 export default BookingsList;
+
+

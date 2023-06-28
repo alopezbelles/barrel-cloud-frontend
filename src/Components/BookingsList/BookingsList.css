@@ -13,4 +13,32 @@ h2{
 .rowListDesign{
     color: white;
     margin-bottom: 1em;
+    width: 100%;
+}
+
+.col1Bookings{
+    max-width: 25%;
+}
+
+.col2Bookings{
+    max-width: 25%;
+}
+
+.col3Bookings{
+    display: flex;
+    max-width: 50%;
+    align-items: center;
+    justify-content: center;
+    /* padding: 1em; */
+}
+
+.buttonDesign{
+    margin: 5px;
+}
+.formSelectDesign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 60%;
 }
