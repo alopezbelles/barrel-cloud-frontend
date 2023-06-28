@@ -45,7 +45,7 @@ function AddBook() {
     };
   
     return (
-      <Container className="container">
+      <Container className="containerBooking">
         <h2>ADD BOOKING</h2>
         {showSuccessAlert && (
           <Alert
@@ -56,9 +56,10 @@ function AddBook() {
             Registro añadido con éxito
           </Alert>
         )}
+        <div className="divfForm">
         <Form onSubmit={handleSubmit}>
           <Row className="rowListDesign">
-            <Col>
+            <Col className="colFormDesign">
               <Form.Control
                 type="text"
                 placeholder="Descripción"
@@ -85,6 +86,8 @@ function AddBook() {
             </Col>
           </Row>
         </Form>
+        </div>
+        
       </Container>
     );
   }

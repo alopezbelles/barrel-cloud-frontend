@@ -1,6 +1,8 @@
-.container {
+.containerBooking {
     color: white;
-    background-color: #736878;
+    background-color: #7d7183;
+    
+    
 
   }
   
@@ -13,11 +15,33 @@
   .booking {
     background-color: rgb(255, 255, 255);
     color: rgb(16, 16, 16);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
   
   .rowListDesign {
     color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     
     margin-bottom: 1em;
   }
   
+  /* .colFormDesign{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  .divfForm{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+  }

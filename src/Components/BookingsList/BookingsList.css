@@ -1,19 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
 h2{
     color: white;
     margin-bottom: 1em;
     margin-top: 1em;
+
+    font-family: 'Raleway', sans-serif;
+}
+
+.containerBookingList{
+    color: white;
 }
 
 .booking{
     background-color: white;
     color: white;
+    
 }
 
 .rowListDesign{
     color: white;
     margin-bottom: 1em;
     width: 100%;
+    
 }
 
 .col1Bookings{

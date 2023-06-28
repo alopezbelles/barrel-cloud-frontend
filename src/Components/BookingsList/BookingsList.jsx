@@ -73,9 +73,13 @@ function BookingsList() {
   };
 
   return (
-    <Container >
+    <Container className="containerBookingList">
       <h2>BOOKINGS LIST</h2>
-      <p>The list of reservations is shown below.  Each one shows its description, creation date, and current status. You can change the status value, or delete the reservation. </p>
+      <p>
+        The list of reservations is shown below. Each one shows its description,
+        creation date, and current status. You can change the status value, or
+        delete the reservation.{" "}
+      </p>
       <ul style={{ listStyleType: "none" }}>
         {bookings.map((booking, index) => (
           <li key={booking.id}>
@@ -86,7 +90,7 @@ function BookingsList() {
               </Col>
               <Col className="col3Bookings">
                 <Form.Select
-                className="formSelectDesign"
+                  className="formSelectDesign"
                   value={selectedStatuses[index]}
                   onChange={(event) => handleStatusChange(event, index)}
                   data-id={booking.id}
@@ -119,5 +123,3 @@ function BookingsList() {
 }
 
 export default BookingsList;
-
-
