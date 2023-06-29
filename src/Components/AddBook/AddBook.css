@@ -1,47 +1,56 @@
 .containerBooking {
-    color: white;
-    background-color: #7d7183;
-    
-    
+  color: white;
+  background-color: #7d7183;
+}
 
+h2 {
+  color: white;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.booking {
+  background-color: rgb(85, 92, 233);
+  color: rgb(242, 242, 242);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rowListDesign {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  margin-bottom: 1em;
+}
+
+.divForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+@media screen and (max-width: 600px) {
+  .divForm {
+    flex-direction: column;
   }
-  
-  h2 {
-    color: white;
-    margin-bottom: 1em;
+
+  .rowListDesign {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .colFormDesign {
+    margin: 1em;
+  }
+  .booking {
     margin-top: 1em;
   }
-  
-  .booking {
-    background-color: rgb(255, 255, 255);
-    color: rgb(16, 16, 16);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .rowListDesign {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-    margin-bottom: 1em;
-  }
-  
-  /* .colFormDesign{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  } */
-
-  .divfForm{
-    display: flex;
-    flex-direction: row; 
-    align-items: center;
-    justify-content: center;
-  }
+}

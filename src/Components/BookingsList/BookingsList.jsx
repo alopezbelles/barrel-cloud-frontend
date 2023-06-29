@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
 // STYLES AND ASSETS
@@ -8,6 +8,8 @@ import "./BookingsList.css";
 function BookingsList() {
   const [bookings, setBookings] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [bookingToDelete, setBookingToDelete] = useState(null);
 
   useEffect(() => {
     fetchBookings();
@@ -49,9 +51,13 @@ function BookingsList() {
   };
 
   const handleDelete = (bookingId) => {
-    console.log(bookingId);
+    setBookingToDelete(bookingId);
+    setShowDeleteAlert(true);
+  };
+
+  const confirmDelete = () => {
     axios
-      .delete("http://localhost:3656/delete", { data: { id: bookingId } })
+      .delete("http://localhost:3656/delete", { data: { id: bookingToDelete } })
       .then((response) => {
         console.log(response.data);
         fetchBookings();
@@ -59,6 +65,12 @@ function BookingsList() {
       .catch((error) => {
         console.error(error);
       });
+
+    setShowDeleteAlert(false);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteAlert(false);
   };
 
   const formatDateTime = (dateTimeString) => {
@@ -73,13 +85,32 @@ function BookingsList() {
   };
 
   return (
-    <Container className="containerBookingList">
+    <Container id="bookingList" className="containerBookingList">
       <h2>BOOKINGS LIST</h2>
-      <p>
-        The list of reservations is shown below. Each one shows its description,
+      <p style={{ margin: "2em" }}>
+        The list of bookings is shown below. Each one shows its description,
         creation date, and current status. You can change the status value, or
-        delete the reservation.{" "}
+        delete the bookings.
       </p>
+      {showDeleteAlert && (
+        <Alert variant="warning" onClose={cancelDelete} dismissible>
+          <Alert.Heading>
+            Are you sure you want to eliminate the booking?
+          </Alert.Heading>
+          <p>
+            This action cannot be undone. Please confirm if you want to proceed
+            with the deletion.
+          </p>
+          <div className="d-flex justify-content-end">
+            <Button onClick={confirmDelete} variant="danger" className="me-2">
+              SI
+            </Button>
+            <Button onClick={cancelDelete} variant="secondary">
+              NO
+            </Button>
+          </div>
+        </Alert>
+      )}
       <ul style={{ listStyleType: "none" }}>
         {bookings.map((booking, index) => (
           <li key={booking.id}>
@@ -99,20 +130,22 @@ function BookingsList() {
                   <option value="pending">Pending</option>
                   <option value="canceled">Canceled</option>
                 </Form.Select>
-                <Button
-                  className="buttonDesign"
-                  onClick={() => handleUpdate(booking.id_book, index)}
-                  data-id={booking.id}
-                >
-                  Actualizar
-                </Button>
-                <Button
-                  className="buttonDesign"
-                  onClick={() => handleDelete(booking.id_book)}
-                  variant="danger"
-                >
-                  Eliminar
-                </Button>
+                <div>
+                  <Button
+                    className="buttonDesign"
+                    onClick={() => handleUpdate(booking.id_book, index)}
+                    data-id={booking.id}
+                  >
+                    Update
+                  </Button>
+                  <Button
+                    className="buttonDesign"
+                    onClick={() => handleDelete(booking.id_book)}
+                    variant="danger"
+                  >
+                    Delete
+                  </Button>
+                </div>
               </Col>
             </Row>
           </li>
