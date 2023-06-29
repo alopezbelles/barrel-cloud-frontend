@@ -28,9 +28,9 @@ function AddBook() {
       })
       .then((response) => {
         console.log(response.data);
-        setShowSuccessAlert(true); // Muestro el mensaje de éxito
-        setDescription(""); // Limpio el campo de descripción
-        setStatus(""); // Restablezco el estado del select
+        setShowSuccessAlert(true);
+        setDescription("");
+        setStatus("");
 
         setTimeout(() => {
           window.location.reload();
@@ -70,11 +70,7 @@ function AddBook() {
               />
             </Col>
             <Col>
-              <Form.Select
-                // className="booking"
-                value={status}
-                onChange={handleStatusChange}
-              >
+              <Form.Select value={status} onChange={handleStatusChange}>
                 <option value="">Select status</option>
                 <option value="active">Active</option>
                 <option value="pending">Pending</option>

@@ -9,6 +9,7 @@ function BookingsList() {
   const [bookings, setBookings] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showUpdateAlert, setShowUpdateAlert] = useState(false);
   const [bookingToDelete, setBookingToDelete] = useState(null);
 
   useEffect(() => {
@@ -44,6 +45,7 @@ function BookingsList() {
       .then((response) => {
         console.log(response.data);
         fetchBookings();
+        setShowUpdateAlert(true);
       })
       .catch((error) => {
         console.error(error);
@@ -103,12 +105,21 @@ function BookingsList() {
           </p>
           <div className="d-flex justify-content-end">
             <Button onClick={confirmDelete} variant="danger" className="me-2">
-              SI
+              YES
             </Button>
             <Button onClick={cancelDelete} variant="secondary">
               NO
             </Button>
           </div>
+        </Alert>
+      )}
+      {showUpdateAlert && (
+        <Alert
+          variant="success"
+          onClose={() => setShowUpdateAlert(false)}
+          dismissible
+        >
+          <Alert.Heading>Booking successfully updated</Alert.Heading>
         </Alert>
       )}
       <ul style={{ listStyleType: "none" }}>
