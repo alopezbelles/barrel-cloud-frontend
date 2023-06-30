@@ -57,7 +57,7 @@ function AddBook() {
           onClose={() => setShowSuccessAlert(false)}
           dismissible
         >
-          Registro añadido con éxito
+          Booking successfully added
         </Alert>
       )}
       <div className="divForm">
