@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { addBooking } from "../../Services/ApiCalls";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
@@ -22,13 +22,14 @@ function AddBook() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post("http://localhost:3656/newbooking", {
-        description: description,
-        status: status,
-      })
-      .then((response) => {
-        console.log(response.data);
+    const bookingData = {
+      description: description,
+      status: status,
+    };
+
+    addBooking(bookingData)
+      .then((data) => {
+        console.log(data);
         setShowSuccessAlert(true);
         setDescription("");
         setStatus("");

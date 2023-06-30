@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { getAll, updateBooking, deleteBooking } from "../../Services/ApiCalls";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
@@ -18,11 +18,10 @@ function BookingsList() {
   }, []);
 
   const fetchBookings = () => {
-    axios
-      .get("http://localhost:3656/getall")
-      .then((response) => {
-        setBookings(response.data);
-        setSelectedStatuses(response.data.map((booking) => booking.status));
+    getAll()
+      .then((data) => {
+        setBookings(data);
+        setSelectedStatuses(data.map((booking) => booking.status));
       })
       .catch((error) => {
         console.error(error);
@@ -38,13 +37,9 @@ function BookingsList() {
   const handleUpdate = (bookingId, index) => {
     const selectedStatus = selectedStatuses[index];
 
-    axios
-      .put("http://localhost:3656/update", {
-        id: bookingId,
-        status: selectedStatus,
-      })
-      .then((response) => {
-        console.log(response.data);
+    updateBooking(bookingId, selectedStatus)
+      .then((data) => {
+        console.log(data);
         fetchBookings();
         setShowUpdateAlert(true);
       })
@@ -59,10 +54,9 @@ function BookingsList() {
   };
 
   const confirmDelete = () => {
-    axios
-      .delete("http://localhost:3656/delete", { data: { id: bookingToDelete } })
-      .then((response) => {
-        console.log(response.data);
+    deleteBooking(bookingToDelete)
+      .then((data) => {
+        console.log(data);
         fetchBookings();
       })
       .catch((error) => {
