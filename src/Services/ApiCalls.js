@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const URL ="https://barrel-cloud-backend-production.up.railway.app"
+
 export const getAll = async () => {
   try {
-    const response = await axios.get("http://localhost:3656/getall");
+    const response = await axios.get(`${URL}/getall`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -12,7 +14,7 @@ export const getAll = async () => {
 
 export const updateBooking = async (bookingId, status) => {
     try {
-      const response = await axios.put("http://localhost:3656/update", {
+      const response = await axios.put(`${URL}/update`, {
         id: bookingId,
         status: status,
       });
@@ -24,7 +26,7 @@ export const updateBooking = async (bookingId, status) => {
 
   export const deleteBooking = async (bookingId) => {
     try {
-      const response = await axios.delete("http://localhost:3656/delete", {
+      const response = await axios.delete(`${URL}/delete`, {
         data: { id: bookingId },
       });
       return response.data;
