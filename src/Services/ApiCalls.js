@@ -37,7 +37,7 @@ export const updateBooking = async (bookingId, status) => {
 
   export const addBooking = async (bookingData) => {
     try {
-      const response = await axios.post("http://localhost:3656/newbooking", bookingData);
+      const response = await axios.post(`${URL}/newbooking`, bookingData);
       return response.data;
     } catch (error) {
       console.error(error);
