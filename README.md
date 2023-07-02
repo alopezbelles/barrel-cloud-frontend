@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# TRIPE-WISE
+Proyecto FrontEnd desarrollado con React.js. Gestor de reservas de viajes. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Datos generales
 
-## Available Scripts
+**- Autor del proyecto:** Alejandro López Bellés
 
-In the project directory, you can run:
+**- Título del proyecto:** TRIPE-WISE
 
-### `npm start`
+**- Fecha:** 29/06/2023
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ ### Tecnologías  y dependencias
+El proyecto se ha desarrollado utilizando las siguientes tecnologías y dependencias:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> React: Biblioteca de JavaScript para construir interfaces de usuario interactivas y reactivas.
+> Bootstrap: Framework CSS que proporciona estilos predefinidos y componentes para el diseño y la estructura de la interfaz de usuario.
 
-### `npm test`
+ ### Acceso a la aplicación
+ 
+La aplicación está desplegada en Amazon Web Services y se puede acceder a ella a través del siguiente enlace:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> https://main.d2ze8qbjn1wcbz.amplifyapp.com/
+ 
+![image](https://github.com/alopezbelles/orbys-frontend/assets/113507322/cff79f21-a9d4-41d3-8ac1-6369a46f3bc1)
 
-### `npm run build`
+ ### Descripción general del proyecto 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La aplicación es un gestor de reservas de viajes y ha sido diseñada y desarrollada utilizando React y Bootstrap. El Frontend consiste en una única página que recoge todas las funcionalidades de la web.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+La interfaz de la aplicación se comunica con una base de datos SQL a través de una API desarrollada con Express.js. Esto significa que la aplicación es capaz de realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en los registros de la base de datos.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A través de la aplicación, los usuarios pueden recuperar todos los registros almacenados en la base de datos, actualizar registros existentes, eliminar registros y agregar nuevos registros.
 
-### `npm run eject`
+En resumen, TRIPE-WISE es un proyecto Frontend desarrollado con React.js que actúa como un gestor de reservas de viajes, permitiendo a los usuarios interactuar con una base de datos SQL a través de una interfaz intuitiva y funcional. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**-->ADAPTACIÓN A DISPOSITIVOS**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+La aplicación TRIPE-WISE ha sido diseñada con un enfoque responsive, lo que significa que se adapta automáticamente a cualquier dispositivo, brindando una experiencia de usuario óptima en diferentes tamaños de pantalla. Esto garantiza que los usuarios puedan acceder y utilizar la aplicación de manera efectiva, sin importar si lo hacen desde un dispositivo móvil, una tablet o una computadora de escritorio.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![mockup-responsive-lr](https://github.com/alopezbelles/orbys-frontend/assets/113507322/d5d26b42-11f5-4a09-8d05-e81c1c6eb688)
 
-## Learn More
+**RECURSOS ALTERNATIVOS**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Diseño y edición de vectores y logo:
+  - ADOBE ILLUSTRATOR. 
